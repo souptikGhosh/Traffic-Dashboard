@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-base bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  h1 { @apply text-h1; }
+  h2 { @apply text-h2; }
+  h3 { @apply text-h3; }
+}
+
+/* Transitions */
+.smooth-transition {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Map Styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  @apply rounded-lg shadow-lg;
+}
+
+.dark-map {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+  @apply smooth-transition;
+}
+
+.dark-map .leaflet-tile {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.dark-map .leaflet-container {
+  background: #242424;
+}
+
+.custom-div-icon {
+  background: transparent;
+  border: none;
+}
+
+/* Dark Mode Popup Styles */
+.dark .leaflet-popup-content-wrapper {
+  @apply bg-gray-800 text-gray-100;
+}
+
+.dark .leaflet-popup-tip {
+  @apply bg-gray-800;
+}
+
+.dark-map .leaflet-control-zoom {
+  @apply bg-white bg-opacity-80;
+}
+
+.dark-map .leaflet-control-attribution {
+  @apply bg-black bg-opacity-50 text-white;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Card and Component Styles */
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 smooth-transition hover:shadow-xl;
+}
+
+.button {
+  @apply px-4 py-2 rounded-lg font-medium smooth-transition
+         hover:shadow-md active:scale-95
+         focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.button-primary {
+  @apply bg-blue-600 text-white
+         hover:bg-blue-700
+         focus:ring-blue-500;
+}
+
+.input {
+  @apply w-full px-4 py-2 rounded-lg border border-gray-300 
+         dark:border-gray-600 dark:bg-gray-700
+         focus:outline-none focus:ring-2 focus:ring-blue-500
+         smooth-transition;
+} 
